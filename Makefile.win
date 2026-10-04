@@ -1,0 +1,43 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o ReservoirEau.o Serre.o Animal.o StockNourriture.o Statistiques.o
+LINKOBJ  = main.o ReservoirEau.o Serre.o Animal.o StockNourriture.o Statistiques.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "projet c++.exe"
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+ReservoirEau.o: ReservoirEau.cpp
+	$(CPP) -c ReservoirEau.cpp -o ReservoirEau.o $(CXXFLAGS)
+
+Serre.o: Serre.cpp
+	$(CPP) -c Serre.cpp -o Serre.o $(CXXFLAGS)
+
+Animal.o: Animal.cpp
+	$(CPP) -c Animal.cpp -o Animal.o $(CXXFLAGS)
+
+StockNourriture.o: StockNourriture.cpp
+	$(CPP) -c StockNourriture.cpp -o StockNourriture.o $(CXXFLAGS)
+
+Statistiques.o: Statistiques.cpp
+	$(CPP) -c Statistiques.cpp -o Statistiques.o $(CXXFLAGS)
