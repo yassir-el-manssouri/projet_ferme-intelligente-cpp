@@ -53,7 +53,7 @@ Le projet applique rigoureusement les fondamentaux de la conception logicielle e
 
 ### Diagramme de Classes
 
-`
+`	ext
 +-------------------+        +--------------------+
 |   ReservoirEau    |        |       Serre        |
 +-------------------+        +--------------------+
@@ -75,18 +75,18 @@ Le projet applique rigoureusement les fondamentaux de la conception logicielle e
 | + afficherEtat()  |        | + afficherStock()  |
 +-------------------+        +--------------------+
 
-                  +----------------------+
-                  |     Statistiques     |
-                  +----------------------+
-                  | - eauConso           |
-                  | - nourritureConso    |
-                  | - PRIX_EAU (const)   |
-                  | - PRIX_NOURRITURE    |
-                  +----------------------+
-                  | + ajouterConsoEau()  |
-                  | + ajouterConsoNour() |
-                  | + afficherRapport()  |
-                  +----------------------+
+              +----------------------------+
+              |       Statistiques         |
+              +----------------------------+
+              | - eauConso                 |
+              | - nourritureConso          |
+              | - PRIX_EAU (const = 0.5)   |
+              | - PRIX_NOURRITURE (const)  |
+              +----------------------------+
+              | + ajouterConsoEau()        |
+              | + ajouterConsoNourriture() |
+              | + afficherRapport()        |
+              +----------------------------+
 `
 
 ---
@@ -146,14 +146,12 @@ make -f Makefile.win
 0. Quitter
 Votre choix : 5
 
-=== RAPPORT DE CONSOMMATION ===
-Eau totale utilisee : 40 Litres
-Nourriture distribuee : 20 kg
------------------------------------
-Cout Eau : 20 €
-Cout Nourriture : 40 €
-COUT TOTAL OPERATIONNEL : 60 €
-===================================
+=== RAPPORT FINANCIER ===
+Eau consommee : 40 L (Cout : 20 E)
+Nourriture    : 20 kg (Cout : 40 E)
+-------------------------
+COUT TOTAL    : 60 E
+=========================
 `
 
 ---
