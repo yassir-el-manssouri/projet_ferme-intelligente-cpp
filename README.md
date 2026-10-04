@@ -1,4 +1,4 @@
-﻿<div align=center>
+<div align="center">
 
 # 🌾 Ferme Intelligente — Système de Gestion Agricole en C++ (POO)
 
@@ -7,9 +7,9 @@
 [![Dev-C++](https://img.shields.io/badge/IDE-Dev--C%2B%2B%20%2F%20MinGW-blue?style=for-the-badge)](https://www.bloodshed.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-Application console moderne en **C++ orienté objet** modélisant le pilotage automatisé et la gestion intelligente des ressources d'une exploitation agricole : irrigation, contrôle climatique sous serre, suivi du cheptel, alimentation et bilan financier des consommations.
+Application console moderne en **C++ orienté objet** modélisant le pilotage automatisé et la gestion intelligente des ressources d'une exploitation agricole.
 
-[Fonctionnalités](#-fonctionnalités) • [Architecture POO](#-architecture-orientée-objet) • [Structure](#-structure-du-projet) • [Compilation](#-compilation--exécution) • [Auteur](#-auteur)
+[Fonctionnalités](#-fonctionnalités) • [Stack Technique](#%EF%B8%8F-stack-technique) • [Installation](#-installation--configuration)
 
 </div>
 
@@ -17,126 +17,73 @@ Application console moderne en **C++ orienté objet** modélisant le pilotage au
 
 ## 🌟 Fonctionnalités
 
-- 💧 **Gestion Hydraulique & Irrigation (ReservoirEau) :**
-  - Contrôle du volume disponible vs capacité maximale.
-  - Déclenchement d'arrosages contrôlés avec vérification de débit.
-  - Surcharge de méthodes (*function overloading*) : remplissage partiel (emplir(float)) ou complet (emplir()).
-
-- 🌡️ **Régulation Climatique Sous Serre (Serre) :**
-  - Paramétrage et suivi en temps réel de la température cible et du taux d'humidité relative.
-  - Ajustement dynamique de la consigne thermique selon les besoins agronomiques.
-
-- 🐄 **Suivi Vétérinaire & Cheptel (Animal) :**
-  - Modélisation individuelle des animaux (nom, statut de santé : Bon, Moyen, etc.).
-  - Gestion dynamique du troupeau via les conteneurs STL (std::vector<Animal>).
-
-- 🌾 **Gestion des Stocks Fourragers (StockNourriture) :**
-  - Contrôle des réserves de grain/nourriture.
-  - Distribution rationnée avec contrôle des seuils de rupture.
-
-- 📊 **Tableau de Bord Économique & Statistiques (Statistiques) :**
-  - Cumul en continu des consommations d'eau (L) et d'aliments (kg).
-  - Calcul financier automatique basé sur les coûts unitaires (€0.50/L d'eau, €2.00/kg d'aliment).
-  - Génération d'un rapport de synthèse clair pour l'exploitant.
+- 💧 **Gestion Hydraulique & Irrigation (ReservoirEau) :** Contrôle du volume disponible vs capacité maximale. Déclenchement d'arrosages contrôlés avec vérification de débit.
+- 🌡️ **Régulation Climatique Sous Serre (Serre) :** Paramétrage et suivi en temps réel de la température cible et du taux d'humidité relative. Ajustement dynamique de la consigne thermique.
+- 🐄 **Suivi Vétérinaire & Cheptel (Animal) :** Modélisation individuelle des animaux (nom, statut de santé). Gestion dynamique du troupeau via les conteneurs STL.
+- 🌾 **Gestion des Stocks Fourragers (StockNourriture) :** Contrôle des réserves de grain/nourriture. Distribution rationnée avec contrôle des seuils de rupture.
+- 📊 **Tableau de Bord Économique & Statistiques (Statistiques) :** Cumul en continu des consommations d'eau (L) et d'aliments (kg). Calcul financier automatique et génération d'un rapport de synthèse clair.
 
 ---
 
-## 📐 Architecture Orientée Objet
+## 🛠️ Stack Technique
 
-Le projet applique rigoureusement les fondamentaux de la conception logicielle en **C++** :
-
-- **Encapsulation stricte :** Attributs déclarés en private avec contrôle d'accès par des méthodes publiques (public).
-- **Séparation Interface / Implémentation :** Fichiers d'en-tête (.h) pour les prototypes et fichiers source (.cpp) pour la logique métier.
-- **Polymorphisme statique (Surcharge) :** Plusieurs signatures pour une même action (ReservoirEau::remplir).
-- **Const-Correctness :** Utilisation systématique du mot-clé const pour les méthodes d'affichage et de consultation garantissant l'intégrité des états internes.
-- **STL (Standard Template Library) :** Utilisation de std::vector et std::string pour une gestion mémoire robuste et moderne.
-
-### Diagramme de Classes
-
-`	ext
-+-------------------+        +--------------------+
-|   ReservoirEau    |        |       Serre        |
-+-------------------+        +--------------------+
-| - capaciteMax     |        | - temperatureCible |
-| - niveauActuel    |        | - humiditeCible    |
-+-------------------+        +--------------------+
-| + arroser()       |        | + setTemperature() |
-| + remplir()       |        | + afficherClimat() |
-| + remplir(float)  |        +--------------------+
-| + afficherEtat()  |
-+-------------------+
-
-+-------------------+        +--------------------+
-|      Animal       |        |  StockNourriture   |
-+-------------------+        +--------------------+
-| - nom             |        | - qteTotale        |
-| - etatSante       |        +--------------------+
-+-------------------+        | + distribuer()     |
-| + afficherEtat()  |        | + afficherStock()  |
-+-------------------+        +--------------------+
-
-              +----------------------------+
-              |       Statistiques         |
-              +----------------------------+
-              | - eauConso                 |
-              | - nourritureConso          |
-              | - PRIX_EAU (const = 0.5)   |
-              | - PRIX_NOURRITURE (const)  |
-              +----------------------------+
-              | + ajouterConsoEau()        |
-              | + ajouterConsoNourriture() |
-              | + afficherRapport()        |
-              +----------------------------+
-`
+- **Langage :** C++17 (Architecture Orientée Objet, STL, Surcharge, Encapsulation stricte)
+- **Compilateur :** GCC / MinGW (via g++)
+- **Outils de Build :** Makefile
+- **IDE recommandé :** Dev-C++, Code::Blocks, CLion, VS Code
 
 ---
 
-## 📂 Structure du Projet
+## 📂 Structure du Répertoire
 
-`ash
+```bash
 FermeIntelligente/
-├── Animal.h / Animal.cpp                   # Classe représentant les animaux du cheptel
-├── ReservoirEau.h / ReservoirEau.cpp       # Gestion de la réserve d'eau et irrigation
-├── Serre.h / Serre.cpp                     # Régulation du climat (température / humidité)
-├── StockNourriture.h / StockNourriture.cpp # Gestion des rations et stocks d'aliments
-├── Statistiques.h / Statistiques.cpp       # Calcul des dépenses et bilan financier
-├── main.cpp                                # Menu interactif et boucle d'exécution
-├── Makefile.win                            # Fichier Makefile pour compilation sous Windows
-├── projet c++.dev                          # Configuration projet Dev-C++
-└── README.md                               # Documentation du projet
-`
+├── Animal.h / .cpp           # Classe représentant les animaux du cheptel
+├── ReservoirEau.h / .cpp     # Gestion de la réserve d'eau et irrigation
+├── Serre.h / .cpp            # Régulation du climat (température / humidité)
+├── StockNourriture.h / .cpp  # Gestion des rations et stocks d'aliments
+├── Statistiques.h / .cpp     # Calcul des dépenses et bilan financier
+├── main.cpp                  # Menu interactif et boucle d'exécution
+├── Makefile.win              # Fichier Makefile pour compilation sous Windows
+└── projet c++.dev            # Configuration projet Dev-C++
+```
 
 ---
 
-## 🚀 Compilation & Exécution
+## 🚀 Installation & Configuration
 
-### Option 1 : Compilation via g++ (MinGW / GCC / Clang)
+### 1. Cloner le projet
+```bash
+git clone https://github.com/yassir-el-manssouri/projet_ferme-intelligente-cpp.git
+cd projet_ferme-intelligente-cpp
+```
 
+### 2. Compilation & Exécution
+
+**Option 1 : Compilation via g++ (MinGW / GCC / Clang)**
 Ouvrez un terminal dans le répertoire du projet :
-
-`ash
+```bash
 # Compilation de tous les modules sources
 g++ -std=c++17 -Wall main.cpp Animal.cpp ReservoirEau.cpp Serre.cpp StockNourriture.cpp Statistiques.cpp -o ferme_intelligente.exe
 
 # Lancement de l'application
 ./ferme_intelligente.exe
-`
+```
 
-### Option 2 : Compilation via Makefile
-
-`ash
+**Option 2 : Compilation via Makefile**
+```bash
 make -f Makefile.win
-`
+```
 
-### Option 3 : Avec un IDE (Dev-C++, Code::Blocks, CLion, VS Code)
-1. Ouvrez le fichier de projet projet c++.dev avec **Dev-C++** (ou ouvrez le dossier dans votre IDE préféré).
+**Option 3 : Avec un IDE (Dev-C++, etc.)**
+1. Ouvrez le fichier de projet `projet c++.dev` avec **Dev-C++**.
 2. Appuyez sur **F9** (Compiler & Exécuter) ou cliquez sur **Build & Run**.
 
 ---
 
 ## 💻 Exemple d'Utilisation
 
-`	ext
+```text
 --- GESTION FERME INTELLIGENTE ---
 1. Gestion Eau (Arroser/Remplir)
 2. Gestion Serre (Climat)
@@ -152,18 +99,16 @@ Nourriture    : 20 kg (Cout : 40 E)
 -------------------------
 COUT TOTAL    : 60 E
 =========================
-`
+```
 
 ---
 
 ## 👤 Auteur
 
-- **Yassir EL MANSSOURI**
-  - **GitHub :** [@yassir-el-manssouri](https://github.com/yassir-el-manssouri)
-  - **LinkedIn :** [Yassir El Manssouri](https://www.linkedin.com/in/yassir-el-manssouri/)
+- **Yassir EL MANSSOURI** - [@yassir-el-manssouri](https://github.com/yassir-el-manssouri) | [LinkedIn](https://www.linkedin.com/in/yassir-el-manssouri/)
 
 ---
 
 ## 📄 Licence
 
-Ce projet est distribué sous licence MIT.
+Ce projet est sous licence MIT.
